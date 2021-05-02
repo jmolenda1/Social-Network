@@ -5,9 +5,9 @@
 
 {% block content %}
 
-<h1><p> My Posts </p></h1>
-<h3><a href="{% url 'FeedApp:new_post' %}"> Add a new post</a></h3>
-
+<h1><p> Posts </p></h1>
+<form method="POST">
+{% csrf_token %}
 <table style="font-size: 25px;width: 100%;">
 
 {% for p,c,l in zipped_list %}
@@ -19,12 +19,17 @@
     </td>
     <tr style="border: 1px solid black;padding: 6px;">
         <td>{{ p.date_posted }}</td>
-        <td>Likes: &nbsp {{l}} &nbsp&nbsp&nbsp</td>
-        <td>Comments: &nbsp {{c}}</td>
+        <td>
+            <button type="submit" name="like" value={{p.id}} style="background-color: transparent;border: none;">
+            Like: &nbsp {{l}}
+            </button>
+        </td>
+        <td>Comments: &nbsp <a href="{% url 'FeedApp:comments' p.id %}">{{c}}</a></td>
     </tr>
 </tr>
 {% endfor %}
 
 </table>
+</form>
 
 {% endblock content %}
