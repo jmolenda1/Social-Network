@@ -6,6 +6,7 @@ django.setup()
 
 from FeedApp.models import Profile,Relationship
 
+
 '''
 to install from requirements.txt
 pip install -r requirements.txt

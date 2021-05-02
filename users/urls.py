@@ -11,3 +11,4 @@ urlpatterns = [
     # Registration page.
     path('register/', views.register, name='register'),
     ]
+    
